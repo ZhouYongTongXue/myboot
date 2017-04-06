@@ -1,2 +1,2 @@
 # myboot
-test
+学习用的例子
