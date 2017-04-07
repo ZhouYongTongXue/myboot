@@ -1,0 +1,43 @@
+#log
+log4j:
+    path: c:/logs
+#datasource
+spring:
+    datasource:
+        initialize: true # Populate the database using 'data.sql'.
+        name: judgedb
+        platform: all # Platform to use in the schema resource (schema-${platform}.sql).
+        separator: ; # Statement separator in SQL initialization scripts.
+        sql-script-encoding: utf-8 # SQL scripts encoding.
+        type: com.alibaba.druid.pool.DruidDataSource # Fully qualified name of the connection pool implementation to use. By default, it is auto-detected from the classpath.
+        url: jdbc:mysql://192.168.88.93:3306/judge?useUnicode=true&characterEncoding=UTF-8 # JDBC url of the database.
+        username: root
+        password: r00t
+#连接池的配置信息  
+        initialSize: 5  
+        minIdle: 5  
+        maxActive: 20  
+        maxWait: 60000  
+        timeBetweenEvictionRunsMillis: 60000  
+        minEvictableIdleTimeMillis: 300000  
+        validationQuery: SELECT '1'
+        testWhileIdle: true  
+        testOnBorrow: true  
+        testOnReturn: false  
+        poolPreparedStatements: true  
+        maxPoolPreparedStatementPerConnectionSize: 20  
+        filters: stat,wall  
+# JPA 
+    jpa:
+        generate-ddl: true
+        show-sql: true     
+    aop:
+        proxy-target-class: false
+    mvc:
+        servlet:
+            load-on-startup: -1
+        static-path-pattern: /**
+        view:
+#            prefix: /static/
+            suffix: .jsp
+
