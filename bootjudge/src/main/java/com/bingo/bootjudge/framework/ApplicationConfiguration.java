@@ -36,6 +36,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.jaxb.SpringDataJaxb.OrderDto;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;
 
 import com.alibaba.druid.pool.DruidDataSource;
@@ -242,6 +243,16 @@ public class ApplicationConfiguration {
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
 		loadShiroFilterChain(shiroFilterFactoryBean);
 		return shiroFilterFactoryBean;
+	}
+	
+	
+	@Bean
+	public FilterRegistrationBean delegatingFilterProxy(){
+	    FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+	    DelegatingFilterProxy proxy = new DelegatingFilterProxy("shiroFilter");
+	    proxy.setTargetFilterLifecycle(true);
+	    filterRegistrationBean.setFilter(proxy);
+	    return filterRegistrationBean;
 	}
 
 }
