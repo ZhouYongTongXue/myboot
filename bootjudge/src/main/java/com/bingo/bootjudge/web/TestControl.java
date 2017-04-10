@@ -44,8 +44,6 @@ public class TestControl {
 //	@RequiresAuthentication
 	@RequiresRoles("admdin")
 	Map<String, Object> home(String name) {
-		System.out.println(d);
-		System.out.println((DelegatingSubject)SecurityUtils.getSubject() + ":" + SecurityUtils.getSubject().isAuthenticated());
 		Map<String,Object> result = new HashMap<String, Object>();
 		System.out.println(testService.getUser(name));;
 		System.out.println("进入web方法");

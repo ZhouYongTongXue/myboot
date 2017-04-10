@@ -112,7 +112,7 @@ public class StatelessAuthcFilter extends PathMatchingFilter {
 
 		Subject subject = SecurityUtils.getSubject();
 		System.out.println("filter subject : " + subject);
-/*		if (subject.getPrincipal() == null) {
+		if (subject.getPrincipal() == null) {
 			UsernamePasswordToken loginToken = new UsernamePasswordToken(
 					"11111", "");
 			try {
@@ -121,7 +121,7 @@ public class StatelessAuthcFilter extends PathMatchingFilter {
 				e.printStackTrace();
 				return false;
 			}
-		}*/
+		}
 //		subject.hasRole("add");
 		System.out.println(SecurityUtils.getSubject() + ":" + subject);
 		System.out.println(subject.isAuthenticated() + "进入Filter" + WebUtils.getRequestUri((HttpServletRequest)request));
